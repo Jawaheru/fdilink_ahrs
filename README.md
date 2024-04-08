@@ -86,10 +86,12 @@ float64 theta  # 指北角
 You can find the full instalition steps in ROS wiki http://wiki.ros.org/melodic/Installation/Ubuntu
 ##### 4.2 Create ROS workspace 
 (change it to your ROS1 distrbution, I use melodic dist.)
+```
 source /opt/ros/melodic/setup.bash
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/
 catkin_make
+```
 ##### 4.3 Add the driver to the workspace
 sudo apt install ros-melodic-serial
 cd ~/catkin_ws/src
