@@ -1,16 +1,16 @@
-# ROS1的imu功能包(WHEELTWC)
+# ROS1 imu function package (WHEELTWC n100)
 
-### 1.添加依赖：
-#### 1.1 serial模块安装
-[ros-foxy,ros-noetic版本的serial模块安装](https://icode.best/i/32316244547594)
+### 1.Add dependencies：
+#### 1.1 serial module installation
+[ros-foxy,ros-noetic Version of serial module installation](https://icode.best/i/32316244547594)
 
-ros-melodic版本:
+ros-melodic version:
 ```bash
 sudo apt install ros-melodic-serial
 ```
-#### 1.2 CH343驱动安装
+#### 1.2 CH343 Driver Installation
 
-[linux下CH343模块驱动安装](https://github.com/WCHSoftGroup/ch343ser_linux)
+[linux下CH343 Module driver installation](https://github.com/WCHSoftGroup/ch343ser_linux)
 
 **假如你会发生以下ERROR**
 
@@ -81,4 +81,26 @@ float64 x
 float64 y
 float64 theta  # 指北角
 ```
+### 4. Quick guid to run the driver for n100 IMU
+##### 4.1 Install ROS
+You can find the full instalition steps in ROS wiki http://wiki.ros.org/melodic/Installation/Ubuntu
+##### 4.2 Create ROS workspace 
+(change it to your ROS1 distrbution, I use melodic dist.)
+source /opt/ros/melodic/setup.bash
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/
+catkin_make
+##### 4.3 Add the driver to the workspace
+sudo apt install ros-melodic-serial
+cd ~/catkin_ws/src
+git clone 
+cd ~/catkin_ws/src/fdilink_ahrs
+sudo sh wheeltec_udev.sh
+cd ../../
+catkin_make -DCATKIN_WHITELIST_PACKAGES=fdilink_ahrs
+##### 4.4 Launch the driver
+roscore
+roslaunch fdilink_ahrs  ahrs_driver.launch
+
+
 
