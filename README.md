@@ -93,6 +93,7 @@ cd ~/catkin_ws/
 catkin_make
 ```
 ##### 4.3 Add the driver to the workspace
+```
 sudo apt install ros-melodic-serial
 cd ~/catkin_ws/src
 git clone 
@@ -100,9 +101,43 @@ cd ~/catkin_ws/src/fdilink_ahrs
 sudo sh wheeltec_udev.sh
 cd ../../
 catkin_make -DCATKIN_WHITELIST_PACKAGES=fdilink_ahrs
+```
 ##### 4.4 Launch the driver
-roscore
-roslaunch fdilink_ahrs  ahrs_driver.launch
+Open two terminlas :
+```
+roscore    #Terminal 1
+```
+```
+roslaunch fdilink_ahrs  ahrs_driver.launch  #Terminal 2
+```
+If "No port found or cannot open port" error shown use this command"
+```
+sudo chown :gp /dev/ttyUSB0
+```
+Now you can list all the topics
+```
+rostopic list
+```
+To show any topic in the list use echo /(the topic name) e.g. :
+```
+rostopic echo /imu_data
+```
+##### 4.5 Visualize the data using rviz
+Open new terminal and launch:
+```
+roslaunch fdilink_ahrs tf.launch
+```
+Open rviz
+```
+rviz
+```
+In rviz go to add >> By display type >> TF
+Also in `Global options`
+
+
+
+
+
 
 
 
